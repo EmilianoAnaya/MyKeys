@@ -1,6 +1,8 @@
 package com.example.mykeys.ui.theme
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -36,7 +38,8 @@ val Typography = Typography(
     titleMedium = TextStyle(
         fontFamily = headingTitle,
         fontWeight = FontWeight.Normal,
-        fontSize = 10.sp
+        fontSize = 15.sp,
+        color = Color.White
     )
     /* Other default text styles to override
     titleLarge = TextStyle(

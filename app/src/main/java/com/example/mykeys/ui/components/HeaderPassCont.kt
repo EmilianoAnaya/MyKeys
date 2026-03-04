@@ -1,21 +1,27 @@
 package com.example.mykeys.ui.components
 
 import android.widget.EditText
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -36,10 +42,11 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mykeys.R
+import com.example.mykeys.ui.theme.Green
 import com.example.mykeys.ui.theme.Typography
 
 @Composable
-fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = true){
+fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
     Column(
         Modifier
             .fillMaxWidth()
@@ -48,21 +55,31 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = true){
             Modifier
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            //horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = headerTitle,
                 color = MaterialTheme.colorScheme.onSecondary,
-                style = Typography.titleMedium
+                style = Typography.titleMedium,
             )
             if(searchAvailable){
                 Row(
-                    verticalAlignment = Alignment.CenterVertically
+                    Modifier
+                        .padding(horizontal = 15.dp)
+                        .border(
+                            color = Green,
+                            width = 2.dp,
+                            shape = RoundedCornerShape(7.dp)
+                        )
+                        .weight(1f)
+                    ,
+
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.search),
                         contentDescription = "Star icon",
-                        tint = Color.White
+                        tint = Color.White,
                     )
 
                     var text by remember { mutableStateOf("") }
@@ -70,10 +87,43 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = true){
                         value = text,
                         onValueChange = { newText -> text = newText },
                         Modifier
-                            .background(color = Color.Gray)
-                            .height(40.dp)
-                            .fillMaxWidth()
+                            .padding(3.dp)
+                            .background(color = Color.Transparent),
+
+                        singleLine = true,
+                        textStyle = Typography.titleMedium
                     )
+                }
+                IconButton(
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp)
+                        .height(32.dp)
+                        .width(32.dp),
+                    onClick = {}
+                ) {
+                    Icon(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        painter = painterResource(R.drawable.sort_by_alpha_24dp_e3e3e3_fill0_wght400_grad0_opsz24),
+                        contentDescription = "Sort by alpha",
+                        tint = Color.White
+                    )
+                }
+
+                IconButton(
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp)
+                        .height(32.dp)
+                        .width(32.dp),
+                    onClick = {}
+                ) {
+                    Icon(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        painter = painterResource(R.drawable.arrow_down_up),
+                        contentDescription = "Sort by alpha",
+                        tint = Color.White,
+                        )
                 }
             }
         }
@@ -91,5 +141,5 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = true){
 @Preview
 @Composable
 fun PrevHeaderPassCont(){
-    HeaderPassCont("All Keys")
+    HeaderPassCont("All Keys", true)
 }
