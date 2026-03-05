@@ -11,13 +11,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mykeys.ui.components.MainHeader
 import com.example.mykeys.ui.components.PasswordContent
+import com.example.mykeys.ui.theme.AppTheme
 import com.example.mykeys.ui.theme.MyKeysTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyKeysTheme() {
+            MyKeysTheme{
                 MainView()
             }
         }
@@ -38,7 +38,7 @@ fun MainView() {
         Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(color = MaterialTheme.colorScheme.primary)
+            .background(color = AppTheme.colors.inversePrimary)
 
     ) {
         MainHeader()
@@ -55,7 +55,7 @@ fun MainView() {
 @Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewMainView() {
-    MyKeysTheme() {
+    MyKeysTheme{
         MainView()
     }
 }

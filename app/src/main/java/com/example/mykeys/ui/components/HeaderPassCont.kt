@@ -1,15 +1,11 @@
 package com.example.mykeys.ui.components
 
-import android.widget.EditText
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,16 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -35,14 +24,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mykeys.R
-import com.example.mykeys.ui.theme.Green
+import com.example.mykeys.ui.theme.AppTheme
 import com.example.mykeys.ui.theme.Typography
 
 @Composable
@@ -59,7 +45,7 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
         ) {
             Text(
                 text = headerTitle,
-                color = MaterialTheme.colorScheme.onSecondary,
+                color = AppTheme.colors.uiElements,
                 style = Typography.titleMedium,
             )
             if(searchAvailable){
@@ -67,7 +53,7 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
                     Modifier
                         .padding(horizontal = 15.dp)
                         .border(
-                            color = Green,
+                            color = AppTheme.colors.inverseSecondary,
                             width = 2.dp,
                             shape = RoundedCornerShape(7.dp)
                         )
@@ -79,7 +65,7 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
                     Icon(
                         painter = painterResource(R.drawable.search),
                         contentDescription = "Star icon",
-                        tint = Color.White,
+                        tint = AppTheme.colors.uiElements,
                     )
 
                     var text by remember { mutableStateOf("") }
@@ -106,7 +92,7 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
                             .fillMaxSize(),
                         painter = painterResource(R.drawable.sort_by_alpha_24dp_e3e3e3_fill0_wght400_grad0_opsz24),
                         contentDescription = "Sort by alpha",
-                        tint = Color.White
+                        tint = AppTheme.colors.uiElements
                     )
                 }
 
@@ -122,7 +108,7 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
                             .fillMaxSize(),
                         painter = painterResource(R.drawable.arrow_down_up),
                         contentDescription = "Sort by alpha",
-                        tint = Color.White,
+                        tint = AppTheme.colors.uiElements,
                         )
                 }
             }

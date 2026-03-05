@@ -8,6 +8,8 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
@@ -27,6 +29,7 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = DarkBlue,
+    inversePrimary = BlueGray,
     onPrimary = Green,
     secondary = BlueGray,
     onSecondary = Color.White,
@@ -42,6 +45,26 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF1C1B1F),
     */
 )
+
+private val CustomDarkColorScheme = CustomColors(
+    primary = BlueGray,
+    inversePrimary = DarkBlue,
+    secondary = Red,
+    inverseSecondary = Green,
+    uiElements = Color.White
+)
+
+private val CustomLightColorScheme = CustomColors(
+    primary = BlueGray,
+    inversePrimary = DarkBlue,
+    secondary = Red,
+    inverseSecondary = Green,
+    uiElements = Color.White
+)
+
+val LocalCustomColors = staticCompositionLocalOf{
+    CustomDarkColorScheme
+}
 
 @Composable
 fun MyKeysTheme(
@@ -60,9 +83,20 @@ fun MyKeysTheme(
         else -> LightColorScheme
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    val customColorScheme =
+        if(darkTheme)
+            CustomDarkColorScheme
+        else
+            CustomLightColorScheme
+
+    CompositionLocalProvider(
+        LocalCustomColors provides customColorScheme
+    ) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content
+        )
+    }
+
 }

@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.example.mykeys.ui.theme.AppTheme
 import com.example.mykeys.ui.theme.Green
 import com.example.mykeys.ui.theme.MyKeysTheme
 import com.example.mykeys.ui.theme.Typography
@@ -40,7 +40,7 @@ fun MainHeader(){
             .zIndex(1f)
             .shadow(50.dp, headerShape)
             .clip(headerShape)
-            .background(color = MaterialTheme.colorScheme.secondary)
+            .background(color = AppTheme.colors.primary)
             .padding(horizontal = 21.dp)
             .padding(bottom = 12.dp),
     ) {
@@ -52,7 +52,7 @@ fun MainHeader(){
             verticalAlignment = Alignment.CenterVertically
             ) {
             Text("MyKeyring",
-                color = MaterialTheme.colorScheme.onSecondary,
+                color = AppTheme.colors.uiElements,
                 style = Typography.titleLarge,
             )
             Button(
@@ -61,7 +61,7 @@ fun MainHeader(){
                 modifier = Modifier
                     .height(35.dp)
             ) {
-                Text("New Key", color=MaterialTheme.colorScheme.onSecondary, fontSize = 15.sp)
+                Text("New Key", color=AppTheme.colors.uiElements, fontSize = 15.sp)
             }
         }
     }
@@ -70,7 +70,7 @@ fun MainHeader(){
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun PrevMainHeader() {
-    MyKeysTheme() {
+    MyKeysTheme {
         MainHeader()
     }
 }
