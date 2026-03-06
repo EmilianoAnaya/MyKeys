@@ -19,13 +19,27 @@ val headingTitle = FontFamily(
     Font(R.font.arimo_italic)
 )
 
+val bodyDefault = FontFamily(
+    Font(R.font.caladea_italic)
+)
+
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = bodyDefault,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        fontSize = 18.sp
+    ),
+
+    bodyMedium = TextStyle(
+        fontFamily = bodyDefault,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    ),
+
+    bodySmall = TextStyle(
+        fontFamily = mainTitle,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp
     ),
 
     titleLarge = TextStyle(

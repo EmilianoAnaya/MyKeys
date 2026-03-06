@@ -13,6 +13,7 @@ fun PasswordContent(headerTitle : String, searchAvailable : Boolean = false){
             .fillMaxWidth()
     ) {
         HeaderPassCont(headerTitle, searchAvailable)
+        PasswordRow()
     }
 }
 
