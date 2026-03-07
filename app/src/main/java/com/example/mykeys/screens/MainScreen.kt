@@ -8,20 +8,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.mykeys.ui.components.MainHeader
 import com.example.mykeys.ui.components.PasswordContent
 import com.example.mykeys.ui.theme.AppTheme
 
 @Composable
-fun MainScreen(){
+fun MainScreen(navController: NavController){
     Box(
         Modifier
             .fillMaxSize()
             .background(color = AppTheme.colors.inversePrimary)
 
     ) {
-        MainHeader()
+        MainHeader(navController)
         LazyColumn(
             contentPadding = PaddingValues(top = 110.dp),
             modifier = Modifier
@@ -33,4 +36,10 @@ fun MainScreen(){
         }
 
     }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun PrevMainScreen(){
+    MainScreen(rememberNavController())
 }

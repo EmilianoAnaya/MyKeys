@@ -22,13 +22,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.mykeys.navigation.AppScreens
 import com.example.mykeys.ui.theme.AppTheme
 import com.example.mykeys.ui.theme.Green
 import com.example.mykeys.ui.theme.MyKeysTheme
 import com.example.mykeys.ui.theme.Typography
 
 @Composable
-fun MainHeader(){
+fun MainHeader(navController: NavController){
     val headerShape = RoundedCornerShape(
         bottomEnd = 16.dp,
         bottomStart = 16.dp
@@ -57,7 +60,9 @@ fun MainHeader(){
                 style = Typography.titleLarge,
             )
             Button(
-                onClick = {},
+                onClick = {
+                   navController.navigate(route = AppScreens.NewKeyScreen.route)
+                },
                 border = BorderStroke(2.dp, Green),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = AppTheme.colors.inversePrimary
@@ -74,5 +79,5 @@ fun MainHeader(){
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun PrevMainHeader() {
-    MainHeader()
+    MainHeader(rememberNavController())
 }
