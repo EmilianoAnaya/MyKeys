@@ -1,9 +1,11 @@
 package com.example.mykeys.ui.components
 
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +25,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,6 +41,7 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
     Column(
         Modifier
             .fillMaxWidth()
+            .padding(horizontal = 10.dp)
     ) {
         Row(
             Modifier
@@ -77,7 +83,10 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
                             .background(color = Color.Transparent),
 
                         singleLine = true,
-                        textStyle = Typography.titleMedium
+                        textStyle = Typography.bodyMedium.copy(
+                            color = AppTheme.colors.uiElements
+                        ),
+                        cursorBrush = SolidColor(AppTheme.colors.uiElements)
                     )
                 }
                 IconButton(
@@ -114,12 +123,20 @@ fun HeaderPassCont(headerTitle : String, searchAvailable : Boolean = false){
             }
         }
 
-        Row(
+        Box(
             Modifier
                 .height(3.dp)
                 .fillMaxWidth()
-                .background(Color.White)
-        ) { }
+                .clip(shape = RoundedCornerShape(size = 10.dp))
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.White
+                        )
+                    )
+                )
+        )
     }
 }
 

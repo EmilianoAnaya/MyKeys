@@ -51,7 +51,7 @@ val Typography = Typography(
     titleMedium = TextStyle(
         fontFamily = headingTitle,
         fontWeight = FontWeight.Normal,
-        fontSize = 15.sp,
+        fontSize = 18.sp,
         color = Color.White
     )
     /* Other default text styles to override

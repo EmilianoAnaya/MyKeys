@@ -14,6 +14,14 @@ fun PasswordContent(headerTitle : String, searchAvailable : Boolean = false){
     ) {
         HeaderPassCont(headerTitle, searchAvailable)
         PasswordRow()
+        PasswordRow()
+        PasswordRow()
+        PasswordRow()
+        PasswordRow()
+        PasswordRow()
+        PasswordRow()
+        PasswordRow()
+        PasswordRow()
     }
 }
 

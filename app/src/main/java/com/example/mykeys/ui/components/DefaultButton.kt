@@ -46,13 +46,12 @@ fun DefaultButton(
         ),
         shape = RoundedCornerShape(10.dp),
         contentPadding = PaddingValues(
-            vertical = 6.dp,
-            horizontal = 4.dp
+            vertical = 4.dp,
+            horizontal = 8.dp
         ),
         modifier = Modifier
-            .height(30.dp)
-            .width(70.dp)
             .padding(horizontal = 8.dp)
+            .height(31.dp)
     ) {
         if(additionalText != ""){
             Text(
@@ -63,7 +62,7 @@ fun DefaultButton(
         }
         Icon(
             modifier = Modifier
-                .fillMaxSize(),
+                .size(20.dp),
             painter = painterResource(drawableIcon),
             contentDescription = contentDescription,
             tint = AppTheme.colors.uiElements,
@@ -78,5 +77,6 @@ fun PrevDefaultButton(){
     DefaultButton(
         R.drawable.paperclip,
         "Copy Password",
+        //additionalText = "Hola a todos"
     )
 }

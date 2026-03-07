@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,6 +39,7 @@ fun PasswordRow(){
 
     Column(
         modifier = Modifier
+            .padding(vertical = 8.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -60,12 +62,16 @@ fun PasswordRow(){
                 Text(
                     text = "Ref Password",
                     style = Typography.bodyMedium,
-                    color = AppTheme.colors.uiElements
+                    color = AppTheme.colors.uiElements,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text="Email or ID",
                     style = Typography.bodySmall,
-                    color = AppTheme.colors.uiElements
+                    color = AppTheme.colors.uiElements,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
 
@@ -83,6 +89,8 @@ fun PasswordRow(){
         Box(
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(horizontal = 35.dp)
+                .padding(top = 11.dp)
                 .height(2.dp)
                 .clip(shape = RoundedCornerShape(2.dp))
                 .background(color = AppTheme.colors.inverseSecondary.copy(alpha = .20f))
